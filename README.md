@@ -23,11 +23,28 @@ This project uses a modern full-stack architecture:
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
-- Python (v3.8 or higher)
-- npm or yarn
+- **Python 3.8+** - [Download here](https://python.org)
+- **Node.js 16+** - [Download here](https://nodejs.org)
+- **OpenAI API Key** - [Get one here](https://platform.openai.com/api-keys)
 
-### Installation
+### 🎯 One-Click Setup (Recommended)
+
+**Windows:**
+```bash
+# Double-click setup.bat or run:
+setup.bat
+```
+
+**Mac/Linux:**
+```bash
+# Make script executable and run:
+chmod +x setup.sh
+./setup.sh
+```
+
+### 📝 Manual Setup
+
+If you prefer to set up manually:
 
 1. **Clone the repository**
    ```bash
@@ -39,6 +56,8 @@ This project uses a modern full-stack architecture:
    ```bash
    cd apps/backend
    pip install -r requirements.txt
+   cp .env.example .env
+   # Edit .env and add your OpenAI API key
    ```
 
 3. **Set up the frontend**
@@ -47,14 +66,7 @@ This project uses a modern full-stack architecture:
    npm install
    ```
 
-4. **Configure environment variables**
-   
-   Create a `.env` file in `apps/backend/`:
-   ```env
-   OPENAI_API_KEY=your_openai_api_key_here
-   ```
-
-5. **Run the development servers**
+4. **Run the application**
 
    **Backend (Terminal 1):**
    ```bash
@@ -68,9 +80,35 @@ This project uses a modern full-stack architecture:
    npm run dev
    ```
 
-6. **Open your browser**
+5. **Open your browser**
    
    Navigate to `http://localhost:3000` to access the application.
+
+## 🔑 Environment Setup
+
+### Required Environment Variables
+
+Create a `.env` file in `apps/backend/` with:
+
+```env
+# OpenAI API Configuration
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Server Configuration  
+PORT=8000
+HOST=0.0.0.0
+
+# Development Settings
+DEBUG=True
+ENVIRONMENT=development
+```
+
+### Getting an OpenAI API Key
+
+1. Go to [OpenAI Platform](https://platform.openai.com/api-keys)
+2. Sign up or log in
+3. Click "Create new secret key"
+4. Copy the key and paste it in your `.env` file
 
 ## 📁 Project Structure
 
@@ -80,11 +118,14 @@ FounderHubAi/
 │   ├── backend/           # Python FastAPI backend
 │   │   ├── main.py       # Main application entry point
 │   │   ├── requirements.txt
+│   │   ├── .env.example  # Environment template
 │   │   └── user_data.json
 │   └── frontend/         # Next.js frontend
 │       ├── app/          # App router pages
 │       ├── components/   # Reusable UI components
 │       └── types/        # TypeScript type definitions
+├── setup.bat            # Windows setup script
+├── setup.sh             # Unix/Linux/Mac setup script
 ├── infra/               # Infrastructure configuration
 └── services/           # Additional microservices
 ```
@@ -99,7 +140,7 @@ FounderHubAi/
 
 ### For Developers
 1. **Fork the Repository**: Create your own copy
-2. **Set up Development Environment**: Follow the installation guide above
+2. **Run Setup Script**: Use `setup.bat` (Windows) or `setup.sh` (Mac/Linux)
 3. **Make Changes**: Add features or fix bugs
 4. **Submit Pull Request**: Contribute back to the community
 
@@ -111,7 +152,8 @@ FounderHubAi/
 |----------|-------------|----------|
 | `OPENAI_API_KEY` | Your OpenAI API key for AI features | Yes |
 | `PORT` | Backend server port (default: 8000) | No |
-| `NODE_ENV` | Environment mode (development/production) | No |
+| `HOST` | Backend server host (default: 0.0.0.0) | No |
+| `DEBUG` | Enable debug mode (default: True) | No |
 
 ### API Endpoints
 
@@ -119,6 +161,34 @@ FounderHubAi/
 - `GET /api/user/{user_id}` - Get user profile and projects
 - `POST /api/pitch-deck` - Generate pitch deck content
 - `GET /api/market-analysis` - Get market insights
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**"Python not found"**
+- Install Python 3.8+ from [python.org](https://python.org)
+- Make sure Python is added to your system PATH
+
+**"Node.js not found"**
+- Install Node.js 16+ from [nodejs.org](https://nodejs.org)
+- Restart your terminal after installation
+
+**"OpenAI API Error"**
+- Check that your API key is correct in `.env`
+- Ensure you have credits in your OpenAI account
+- Verify the API key has the necessary permissions
+
+**"Port already in use"**
+- Change the port in `.env` file
+- Or kill the process using the port
+
+### Getting Help
+
+If you encounter issues:
+1. Check the [troubleshooting section](#-troubleshooting)
+2. Create an issue on GitHub with error details
+3. Include your operating system and versions
 
 ## 🤝 Contributing
 
